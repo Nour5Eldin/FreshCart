@@ -14,13 +14,13 @@ import { TbTruckDelivery } from "react-icons/tb";
 import RecommendedProducts from '@/components/common/RecommendedProducts'; 
 import { getProductBySlug } from '@/sanity/queries';
 
-const ProductPageDetails = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
-  const product: Product | null = await getProductBySlug(slug);
-
-  if (!product) return <div>Product not found</div>;
-
-  const categoryId = product.categories?.[0]?._ref ?? "";
+const ProductPageDetails = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const { slug } = await params;
+  const product: Product = await getProductBySlug(slug);
 
   if (!product) {
     return <div>Product not found</div>; 
@@ -125,15 +125,6 @@ const ProductPageDetails = async ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
       </Container>
-
-      {/* ✅ المنتجات المقترحة */}
-      <div className="mt-10">
-        <Container>
-          
-          <RecommendedProducts slug={slug} categoryId={categoryId} />
-
-        </Container>
-      </div>
     </div>
   );
 };
