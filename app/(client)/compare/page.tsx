@@ -45,12 +45,13 @@ const ComparePage = () => {
     false,
   ]);
 
-  const searchRefs = [
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-  ];
+const searchRef0 = useRef<HTMLDivElement>(null);
+const searchRef1 = useRef<HTMLDivElement>(null);
+const searchRef2 = useRef<HTMLDivElement>(null);
+const searchRef3 = useRef<HTMLDivElement>(null);
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+const searchRefs = [searchRef0, searchRef1, searchRef2, searchRef3];
 
   // Load products from URL params
   useEffect(() => {

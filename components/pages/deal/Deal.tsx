@@ -69,6 +69,7 @@ const Deal = ({ categories, brands }: Props) => {
 
   useEffect(() => {
     fetchProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory, selectedBrand, selectedPrice]);
 
   return (

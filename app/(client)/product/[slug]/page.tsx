@@ -11,7 +11,6 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
 import { RxBorderSplit } from "react-icons/rx";
 import { TbTruckDelivery } from "react-icons/tb";
-import RecommendedProducts from '@/components/common/RecommendedProducts'; 
 import { getProductBySlug } from '@/sanity/queries';
 
 const ProductPageDetails = async ({

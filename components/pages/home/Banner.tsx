@@ -1,6 +1,5 @@
 import React from "react"
 import Image from "next/image"
-
 import Container from "@/components/common/Container"
 import {
   Carousel,
@@ -13,16 +12,29 @@ import { urlFor } from "@/sanity/lib/image"
 import { getBanner, getSmallBanner } from "@/sanity/queries"
 import ProductComparison from "./ProductComparison"
 
+
+interface BannerItem {
+  _id: string;
+  title?: string;
+  image?: {
+    asset: {
+      _ref: string;
+      _type: string;
+    };
+  };
+  key: string; 
+}
 const Banner = async () => {
   const banner = await getBanner()
-  const smallBanner = await getSmallBanner()
+  const smallBanner: BannerItem | null = await getSmallBanner();
+
   return (
     <Container className="grid grid-cols-1 gap-4 md:gap-5 lg:grid-cols-4">
       {/* Main Banner Carousel */}
       <div className="w-full lg:col-span-3">
         <Carousel className="relative w-full h-[400px] overflow-hidden rounded-md">
           <CarouselContent>
-            {banner?.map((item, index) => (
+            {banner?.map((item: BannerItem, index: number)=> (
               <CarouselItem key={index}>
                 <div className="relative w-full h-[400px]">
                   {item?.image && (
