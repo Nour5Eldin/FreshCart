@@ -13,12 +13,12 @@ import { RxBorderSplit } from "react-icons/rx";
 import { TbTruckDelivery } from "react-icons/tb";
 import RecommendedProducts from '@/components/common/RecommendedProducts'; 
 import { getProductBySlug } from '@/sanity/queries';
-interface ProductPageDetailsProps {
-  params: { slug: string };
-}
 
-const ProductPageDetails = async ({ params }: ProductPageDetailsProps) => {
-    const { slug } = params;
+type Params = {
+  slug: string;
+}
+const ProductPageDetails = async ({ params }: { params: Params }) => {
+  const { slug } = params;
   const product: Product | null = await getProductBySlug(slug);
 
   if (!product) return <div>Product not found</div>;
